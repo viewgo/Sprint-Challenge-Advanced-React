@@ -1,5 +1,6 @@
 import React from 'react';
-import App from "./App";
+import Top from "./components/Top";
+import PlayerList from "./components/PlayerList";
 
 import {
   render,
@@ -8,11 +9,27 @@ import {
   waitForElement
 } from "@testing-library/react";
 
-test('renders without crashing', () => {  
-  render(<App />);
+
+test('displays the title', () => {
+  const container = render(<Top />);
+  container.getByText("Women's World Cup Search Trends");
 });
 
-test('it displays a link with Learn React', () => {
-  const container = render(<App />);
-  container.getByText('Learn React');
+test('displays Player List title', () => {
+  const container = render(<Top />);
+  container.getByText("Toggle Dark Mode");
+});
+
+test("body gains dark mode", () => {
+  const { getByTestId, getByText } = render(<Top/>);
+  fireEvent.click(getByText("Toggle Dark Mode"));
+  expect(document.body.classList.contains('dark-mode')).toBe(true)
+
+});
+
+test("body loses dark mode", () => {
+  const { getByTestId, getByText } = render(<Top/>);
+  fireEvent.click(getByText("Toggle Dark Mode"));
+  expect(document.body.classList.contains('dark-mode')).toBe(false)
+
 });

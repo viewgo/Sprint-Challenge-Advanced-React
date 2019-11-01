@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
+import { PlayerCardContainer } from "../styles/styles.js";
 
-function PlayerCard(props){
+function PlayerCard(props) {
+  const player = props.player;
 
-    const player = props.player;
-
-    return(
-        <>
-        <h2>{player.name}</h2>
-        <h3>{player.country}</h3>
-        <h4>{player.searches}</h4>
-        </>
-    )
+  return (
+    <PlayerCardContainer>
+      <h2>{player.name}</h2>
+      <h3>{player.country}</h3>
+      <h4>Searches: {player.searches}</h4>
+    </PlayerCardContainer>
+  );
 }
 
 export default PlayerCard;
