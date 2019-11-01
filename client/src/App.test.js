@@ -4,9 +4,7 @@ import PlayerList from "./components/PlayerList";
 
 import {
   render,
-  cleanup,
   fireEvent,
-  waitForElement
 } from "@testing-library/react";
 
 
